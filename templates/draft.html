@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #a9a9a6;
+            /* background: url(./grain.jpg) no-repeat center center/contain;
+            opacity: 2;
+            filter: contrast(2); */
+        }
+
+        div {
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        pre {
+            width: 80vw;
+            white-space: pre-wrap;
+            overflow: hidden;
+            font-size: 16.5px;
+            text-overflow: ellipsis;
+        }
+
+        button {
+            align-self: flex-end;
+            padding: 10px 40px;
+            border-radius: 10px;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+        }
+
+        @media print {
+            #printButton {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <button id="printButton">Print</button>
+        <pre>
+            {{ reply }}
+        </pre>
+        <img src="" alt="">
+
+    </div>
+</body>
+<script>
+    document.getElementById("printButton").addEventListener("click", function () {
+        // Handle the button click event here
+        window.print();
+    });
+
+    // Listen for the Ctrl+P keyboard shortcut
+    document.addEventListener("keydown", function (event) {
+        if (event.ctrlKey && event.key === "p") {
+            // Prevent the default browser print dialog
+            event.preventDefault();
+
+            // Trigger the button click event
+            document.getElementById("printButton").click();
+        }
+    });
+</script>
+
+</html>
